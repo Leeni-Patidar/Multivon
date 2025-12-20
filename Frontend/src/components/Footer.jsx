@@ -29,9 +29,7 @@ const Footer = () => {
       setLoading(true)
       setMessage("")
 
-      const res = await axios.post(
-        "http://localhost:5000/api/subscriber",
-        { email }
+      const res = await api.post("/subscriber", { email }
       )
 
       setMessage(res.data.message || "Subscribed successfully 🎉")
