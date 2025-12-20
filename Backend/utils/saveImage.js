@@ -3,10 +3,9 @@ const path = require("path")
 const fs = require("fs")
 
 module.exports = async (buffer) => {
-  // Absolute path to uploads folder
   const uploadDir = path.join(__dirname, "..", "uploads")
 
-  // Create uploads folder if not exists
+  // create uploads folder if not exists
   if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, { recursive: true })
   }
@@ -19,6 +18,6 @@ module.exports = async (buffer) => {
     .jpeg({ quality: 90 })
     .toFile(fullPath)
 
-  // Return path usable in frontend
-  return `/${filename}`
+ 
+  return `/uploads/${filename}`
 }
