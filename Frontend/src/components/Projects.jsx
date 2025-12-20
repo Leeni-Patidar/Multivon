@@ -15,7 +15,7 @@ const Projects = () => {
   }
 
   const deleteProject = async (id) => {
-    if (!window.confirm("Delete this client?")) return
+    if (!window.confirm("Delete this Project?")) return
     await api.delete(`/projects/${id}`)
     fetchProjects()
   }
@@ -80,13 +80,14 @@ const Projects = () => {
 >
 
               <img
-                src={`http://localhost:5000${project.image}`}
-                alt={project.title}
-                className="h-24 w-24 object-cover rounded-full mb-3"
-              />
+              src={`${import.meta.env.VITE_BACKEND_URL}${project.image}`}
+              alt={project.title}
+              className="h-24 w-24 object-cover rounded-full mb-3"
+            />
+
               <p className="text-gray-500 text-sm mb-1">{project.description}</p>
               <h3 className="font-semibold">{project.title}</h3>
-              <span className="text-gray-400 text-sm">{project.role || "Employee"}</span>
+              
 
               {/* Admin Buttons */}
               {isAdminPage && (
@@ -111,32 +112,22 @@ const Projects = () => {
       {isAdminPage && showModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-white w-full max-w-md p-6 rounded-xl">
-            <h3 className="text-xl font-semibold mb-4">Add Client</h3>
+            <h3 className="text-xl font-semibold mb-4">Add Project</h3>
 
             <form onSubmit={handleSubmit} className="space-y-3">
               <input
                 type="text"
                 name="title"
-                placeholder="Client Name"
+                placeholder="Project Name"
                 value={formData.title}
                 onChange={handleChange}
                 className="w-full border p-2 rounded"
                 required
               />
 
-              <input
-                type="text"
-                name="role"
-                placeholder="Designation / Role"
-                value={formData.role || ""}
-                onChange={handleChange}
-                className="w-full border p-2 rounded"
-                required
-              />
-
-              <textarea
+             <textarea
                 name="description"
-                placeholder="Client Description"
+                placeholder="Project Description"
                 value={formData.description}
                 onChange={handleChange}
                 className="w-full border p-2 rounded"

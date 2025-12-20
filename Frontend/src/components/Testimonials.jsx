@@ -114,10 +114,11 @@ const Clients = () => {
                 }`}
             >
               <img
-                src={`http://localhost:5000${client.image}`}
-                alt={client.name}
-                className="w-16 h-16 rounded-full mx-auto mb-4 object-cover"
-              />
+              src={`${import.meta.env.VITE_BACKEND_URL}${client.image}`}
+              alt={client.name}
+              className="w-16 h-16 rounded-full mx-auto mb-4 object-cover"
+            />
+
 
               <p className="text-sm text-gray-600 mb-4">
                 {client.description}
