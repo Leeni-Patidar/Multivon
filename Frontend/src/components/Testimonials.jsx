@@ -71,7 +71,7 @@ const Clients = () => {
   if (error) return <p className="text-center text-red-500">{error}</p>
 
   return (
-    <section className={`py-16 ${isAdmin ? "bg-white" : "bg-gray-50"}`}>
+    <section  id="testimonials"className={`py-16 ${isAdmin ? "bg-white" : "bg-gray-50"}`}>
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Header */}

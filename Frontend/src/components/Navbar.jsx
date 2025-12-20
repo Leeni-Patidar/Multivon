@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -7,6 +7,7 @@ const Navbar = () => {
   const userInitial = "A" // replace later with dynamic name
 
   const navigate = useNavigate()
+  const location = useLocation() // 👈 get current route
 
   // 🔹 Check login status on load
   useEffect(() => {
@@ -41,8 +42,13 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8 font-medium">
-            <a href="#home" className="hover:text-blue-950">Home</a>
-            <a href="#about" className="hover:text-blue-950">About</a>
+            {/* Hide Home and About on /admin */}
+            {location.pathname !== "/admin" && (
+              <>
+                <a href="#home" className="hover:text-blue-950">Home</a>
+                <a href="#about" className="hover:text-blue-950">About</a>
+              </>
+            )}
             <a href="#projects" className="hover:text-blue-950">Projects</a>
             <a href="#testimonials" className="hover:text-blue-950">Testimonials</a>
           </div>

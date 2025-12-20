@@ -92,9 +92,9 @@ const Projects = () => {
               {/* Admin Buttons */}
               {isAdminPage && (
                 <div className="flex gap-2 mt-3">
-                  <button className="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700 text-sm">
+                  {/* <button className="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700 text-sm">
                     Edit
-                  </button>
+                  </button> */}
                   <button
                     onClick={() => deleteProject(project._id)}
                     className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 text-sm"

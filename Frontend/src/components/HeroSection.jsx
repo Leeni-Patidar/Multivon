@@ -20,7 +20,7 @@ const HeroSection = () => {
   }, [])
 
   return (
-    <section className="relative w-full h-[100vh] overflow-hidden">
+    <section id="home" className="relative w-full h-[100vh] overflow-hidden">
       
       {/* Slideshow Image */}
       <img
