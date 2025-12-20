@@ -88,6 +88,12 @@ const Projects = () => {
               <p className="text-gray-500 text-sm mb-1">{project.description}</p>
               <h3 className="font-semibold">{project.title}</h3>
               
+              <button
+               
+                className="mt-3 px-4 py-2 bg-blue-950 text-white rounded hover:bg-blue-700"
+              >
+                Read More
+              </button>
 
               {/* Admin Buttons */}
               {isAdminPage && (
@@ -95,12 +101,12 @@ const Projects = () => {
                   {/* <button className="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700 text-sm">
                     Edit
                   </button> */}
-                  <button
+                  {/* <button
                     onClick={() => deleteProject(project._id)}
                     className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 text-sm"
                   >
                     Delete
-                  </button>
+                  </button> */}
                 </div>
               )}
             </div>

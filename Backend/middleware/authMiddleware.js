@@ -1,23 +1,14 @@
-// const jwt = require("jsonwebtoken")
-
-// module.exports = (req, res, next) => {
-//   const token = req.headers.authorization
-//   if (!token) return res.status(401).json({ message: "No token" })
-
-//   try {
-//     jwt.verify(token, process.env.JWT_SECRET)
-//     next()
-//   } catch {
-//     res.status(401).json({ message: "Invalid token" })
-//   }
-// }
-
-
 const jwt = require("jsonwebtoken")
 
 module.exports = (req, res, next) => {
-  const token = req.headers.authorization
-  if (!token) return res.status(401).json({ message: "Access denied" })
+  const authHeader = req.headers.authorization
+
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return res.status(401).json({ message: "Access denied, no token" })
+  }
+
+  // ✅ Remove "Bearer "
+  const token = authHeader.split(" ")[1]
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
@@ -28,7 +19,8 @@ module.exports = (req, res, next) => {
 
     req.admin = decoded
     next()
-  } catch {
+  } catch (error) {
+    console.error("JWT Error:", error.message)
     res.status(401).json({ message: "Invalid token" })
   }
 }

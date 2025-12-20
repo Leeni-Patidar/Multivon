@@ -29,8 +29,10 @@ const Footer = () => {
       setLoading(true)
       setMessage("")
 
-      const res = await api.post("/subscriber", { email }
-      )
+     const res = await axios.post(
+  `${import.meta.env.VITE_API_URL}/subscriber`,
+  { email }
+)
 
       setMessage(res.data.message || "Subscribed successfully 🎉")
       setEmail("")
