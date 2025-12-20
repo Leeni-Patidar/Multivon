@@ -27,6 +27,12 @@
 
 ---
 
+## Admin Cridentails 
+
+- ADMIN_EMAIL=admin@agency.com
+- ADMIN_PASSWORD=Admin@123
+---
+
 ## LIVE DEMO
 
 - **Frontend:** [https://multivon.vercel.app/] 
